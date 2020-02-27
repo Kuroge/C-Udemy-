@@ -8,17 +8,22 @@ namespace Exercise_5___Text
         {
             Console.WriteLine("Please enter an english word");
             var input = Console.ReadLine();
-            char[] vowels = new char[5]{ 'a', 'e', 'i', 'o', 'u'};
+            Console.WriteLine("There are {0} vowels in that word", CountVowels(input));
+
+        }
+
+        public static int CountVowels(string input)
+        {
+            char[] vowels = new char[5] { 'a', 'e', 'i', 'o', 'u' };
             var vowelsCount = 0;
-            foreach (var letter in input)
+            foreach (var letter in input.ToLower())
             {
                 if (Array.Exists(vowels, vowel => vowel.Equals(letter)))
                 {
                     vowelsCount += 1;
                 }
             }
-            Console.WriteLine("There are {0} vowels in that word", vowelsCount);
-
+            return vowelsCount;
         }
     }
 }

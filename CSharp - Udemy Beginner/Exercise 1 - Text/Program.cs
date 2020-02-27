@@ -14,17 +14,7 @@ namespace Exercise_1___Text
             {
                 numbers.Add(Convert.ToInt32(number));
             }
-            numbers.Sort();
-            var isConsecutive = true;
-            for (int i = 1; i < numbers.Count; i++)
-            {
-                if (numbers[i] != numbers[i - 1] + 1)
-                {
-                    isConsecutive = false;
-                    break;
-                }
-            }
-            if (isConsecutive)
+            if (CheckIfConsecutive(numbers))
             {
                 Console.WriteLine("Son consecutivos");
             }
@@ -33,6 +23,19 @@ namespace Exercise_1___Text
                 Console.WriteLine("No son consecutivos");
             }
 
+        }
+        public static bool CheckIfConsecutive(List<int> numbers)
+        {
+            numbers.Sort();
+            for (int i = 1; i < numbers.Count; i++)
+            {
+                if (numbers[i] != numbers[i - 1] + 1)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

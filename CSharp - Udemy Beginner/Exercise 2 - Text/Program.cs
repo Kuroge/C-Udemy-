@@ -16,18 +16,7 @@ namespace Exercise_2___Text
                 {
                     numbers.Add(Convert.ToInt32(number));
                 }
-                var duplicates = false;
-                List<int> uniques = new List<int>();
-                foreach (var number in numbers)
-                {
-                    if (uniques.Exists(duplicate => duplicate == number))
-                    {
-                        duplicates = true;
-                        break;
-                    }
-                    uniques.Add(number);
-                }
-                if (duplicates)
+                if (Duplicates(numbers))
                 {
                     Console.WriteLine("Duplicates");
                 }
@@ -36,6 +25,19 @@ namespace Exercise_2___Text
                     Console.WriteLine("No duplicates");
                 }
             }
+        }
+        public static bool Duplicates(List<int> numbers)
+        {
+            List<int> uniques = new List<int>();
+            foreach (var number in numbers)
+            {
+                if (uniques.Exists(duplicate => duplicate == number))
+                {
+                    return true;
+                }
+                uniques.Add(number);
+            }
+            return false;
         }
     }
 }

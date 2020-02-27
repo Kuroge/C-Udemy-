@@ -7,16 +7,20 @@ namespace Exercise_4___Text
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Porfavor introduce una serie de palabras separadas por comas");
-            var input = Console.ReadLine().ToLower().Split(" ");
+            Console.WriteLine("Porfavor introduce una serie de palabras separadas por espacios");
+            var input = Console.ReadLine();
+            Console.WriteLine(ToPascalCase(input));
+
+        }
+        public static string ToPascalCase(string input)
+        {
+            var inputList = input.ToLower().Split(" ");
             List<string> pascalVar = new List<string>();
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < inputList.Length; i++)
             {
-                pascalVar.Add(input[i].Substring(0, 1).ToUpper() + input[i].Substring(1));
+                pascalVar.Add(inputList[i].Substring(0, 1).ToUpper() + inputList[i].Substring(1));
             }
-            Console.WriteLine(String.Join("", pascalVar));
-
-
+            return String.Join("", pascalVar);
         }
     }
 }
