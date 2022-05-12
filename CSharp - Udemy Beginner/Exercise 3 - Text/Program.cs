@@ -1,43 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Exercise_3___Text
+namespace Exercise_3___text
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Por favor introduce una hora en formato 24h (ej: 23:34)");
-
+            Console.WriteLine("Porfavor introduce una hora en formato 24 horas. (ej. 19:00)");
             var input = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(input))
+            DateTime time;
+            if (String.IsNullOrWhiteSpace(input) || !DateTime.TryParse(input, out time))
             {
-                Console.WriteLine("Invalid time");
-                return;
+                Console.WriteLine("Invalid");
             }
-
-            List<int> hour = new List<int>();
-
-            foreach (var time in input.Split(':'))
+            else
             {
-                hour.Add(Convert.ToInt32(time));
+                Console.WriteLine("Ok");
             }
-
-            Console.WriteLine(ValidateTime(hour) ? "Ok" : "Invalid Time");
-
-        }
-
-        public static bool ValidateTime(List<int> hour)
-        {
-            if ((hour[0] >= 0 && hour[0] < 24) && (hour[1] >= 0 && hour[1] < 60))
-            {
-                return true;
-            }
-            return false;
         }
     }
 }
